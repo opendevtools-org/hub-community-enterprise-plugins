@@ -1,0 +1,22 @@
+{
+  "id": "api-everything",
+  "name": "API Everything",
+  "version": "0.1.0",
+  "description": "HTTP API installed from the enterprise image. That image includes the REST API, the CLI, and the MCP server.",
+  "launchPath": "/swagger",
+  "healthcheck": "/health",
+  "apiPrefix": "/",
+  "compose": {
+    "file": "docker-compose.backend.yml",
+    "service": "api-everything",
+    "image": "ghcr.io/opendevtools-org/api-everything:enterprise",
+    "containerPort": 8080
+  },
+  "clients": [
+    {
+      "kind": "web",
+      "launchPath": "/swagger"
+    }
+  ],
+  "minPlatformVersion": "0.1.0"
+}

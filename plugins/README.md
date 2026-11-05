@@ -5,11 +5,14 @@ Each folder is one Home Lab Hub market plugin. Hub reads the index
 
 ```
 plugins/<id>/
-  docker-compose.backend.yml     # required — server API, prebuilt image
-  docker-compose.frontend.yml    # web client for devices
-  clients/web/                   # nginx template + launcher page
-  homelab-plugin.json            # optional
-  .env.example                   # vars to merge into the site `.env`
+  docker-compose.backend.yml     # Hub installs this
+  homelab-plugin.json
+  openapi.yaml                   # REST API
+  src/Dockerfile                 # FROM the official image
+  src/cli/                       # CLI
+  src/mcp/                       # MCP server
+  src/publish.sh                 # push ghcr.io/opendevtools-org/<id>:enterprise
+  official/                      # official image, only if none exists yet
 ```
 
 ## Backend (server)

@@ -10,7 +10,7 @@
   "compose": {
     "file": "docker-compose.backend.yml",
     "service": "guacamole",
-    "image": "flcontainers/guacamole:latest",
+    "image": "ghcr.io/opendevtools-org/guacamole:enterprise",
     "containerPort": 8080
   },
   "clients": [

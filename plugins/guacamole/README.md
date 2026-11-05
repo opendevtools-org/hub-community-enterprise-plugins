@@ -65,3 +65,23 @@ FTP.
    **private key** (a dummy password is not enough).
 3. In the session: **Ctrl+Alt+Shift** → folder / **Devices**. You can also
    drag-and-drop files onto the window.
+
+## Enterprise image
+
+Hub installs `ghcr.io/opendevtools-org/guacamole:enterprise`.
+
+`src/Dockerfile` starts from `flcontainers/guacamole:latest` and copies in the
+CLI, the MCP server, and `openapi.yaml`. It does not replace the Guacamole
+command. The REST API is the one Guacamole already serves. Swagger for that
+API is the OpenAPI file in this folder.
+
+Inside the container:
+
+```
+plugin-cli health
+plugin-mcp
+```
+
+Log in once with `docker login ghcr.io`, then publish with `sh src/publish.sh`
+(or `src\publish.ps1` on Windows). The script pushes the enterprise tag.
+Hub installs that tag.

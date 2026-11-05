@@ -1,0 +1,43 @@
+openapi: 3.0.3
+info:
+  title: Apache Guacamole
+  version: 1.6.1
+  description: REST API already served by the official Guacamole image. A copy of this file is at /opt/opendevtools/openapi.yaml in the enterprise image.
+servers:
+  - url: http://127.0.0.1:8080
+paths:
+  /:
+    get:
+      operationId: home
+      responses:
+        "200":
+          description: Guacamole web client.
+  /api/tokens:
+    post:
+      operationId: createToken
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: Auth token.
+  /api/session/data/postgresql/connections:
+    get:
+      operationId: listConnections
+      parameters:
+        - name: token
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Connections stored by this Guacamole data source.

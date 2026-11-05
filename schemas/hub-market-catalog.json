@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/opendevtools-org/hub-community-plugins/main/schemas/hub-market-catalog.json",
+  "$id": "https://raw.githubusercontent.com/opendevtools-org/hub-community-enterprise-plugins/main/schemas/hub-market-catalog.json",
   "title": "Hub Market Catalog",
   "type": "object",
   "required": ["plugins"],

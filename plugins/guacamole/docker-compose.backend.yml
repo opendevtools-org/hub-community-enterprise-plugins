@@ -1,7 +1,8 @@
 # Apache Guacamole for Hub (community plugin).
 # Upstream: https://guacamole.apache.org/
-# Image: flcontainers/guacamole — web UI + guacd + PostgreSQL in one container.
-# Prebuilt linux/amd64 + linux/arm64. No local build.
+# Hub installs ghcr.io/opendevtools-org/guacamole:enterprise.
+# That image starts from flcontainers/guacamole and adds the CLI and MCP server.
+# The Guacamole process stays the REST API. PostgreSQL stays in the same container.
 # Default login: guacadmin / guacadmin (change immediately).
 #
 # PostgreSQL lives under /config. Use a Docker named volume (not a host bind
@@ -10,7 +11,7 @@
 
 services:
   guacamole:
-    image: flcontainers/guacamole:${GUACAMOLE_TAG:-latest}
+    image: ghcr.io/opendevtools-org/guacamole:${GUACAMOLE_TAG:-enterprise}
     pull_policy: always
     container_name: homelab-guacamole
     restart: unless-stopped

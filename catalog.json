@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-09-18",
+  "updatedAt": "2026-11-05",
   "plugins": [
     {
       "id": "guacamole",
       "name": "Apache Guacamole",
-      "description": "Clientless remote desktop gateway (RDP, VNC, SSH) in the browser. Published image from flcontainers/guacamole (Apache Guacamole web + guacd + PostgreSQL). Default login guacadmin / guacadmin — change it immediately.",
+      "description": "Clientless remote desktop gateway (RDP, VNC, SSH) in the browser. Hub installs ghcr.io/opendevtools-org/guacamole:enterprise, built from flcontainers/guacamole. Default login guacadmin / guacadmin — change it immediately.",
       "version": "1.6.1",
       "homepage": "https://guacamole.apache.org/",
-      "repo": "opendevtools-org/hub-community-plugins",
+      "repo": "opendevtools-org/hub-community-enterprise-plugins",
       "ref": "main",
       "visibility": "community",
       "uninstallable": false,
@@ -20,6 +20,27 @@
         {
           "kind": "web",
           "launchPath": "/"
+        }
+      ]
+    },
+    {
+      "id": "api-everything",
+      "name": "API Everything",
+      "description": "HTTP API. Hub installs ghcr.io/opendevtools-org/api-everything:enterprise. The image serves the REST API and includes the CLI and the MCP server.",
+      "version": "0.1.0",
+      "repo": "opendevtools-org/hub-community-enterprise-plugins",
+      "ref": "main",
+      "visibility": "community",
+      "uninstallable": false,
+      "install": {
+        "kind": "compose",
+        "role": "backend",
+        "composeFile": "plugins/api-everything/docker-compose.backend.yml"
+      },
+      "clients": [
+        {
+          "kind": "web",
+          "launchPath": "/swagger"
         }
       ]
     }

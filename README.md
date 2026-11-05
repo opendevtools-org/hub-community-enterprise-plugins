@@ -5,7 +5,7 @@ Curated catalog for Home Lab Hub market.
 Default Hub URL:
 
 ```
-https://raw.githubusercontent.com/opendevtools-org/hub-community-plugins/main/catalog.json
+https://raw.githubusercontent.com/opendevtools-org/hub-community-enterprise-plugins/main/catalog.json
 ```
 
 Hub lists public plugins from `catalog.json`. Each plugin’s **backend** Compose file lives under [`plugins/<id>/`](plugins/). Web clients live under `plugins/<id>/clients/` plus `docker-compose.frontend.yml`.
@@ -14,12 +14,19 @@ Hub lists public plugins from `catalog.json`. Each plugin’s **backend** Compos
 
 ```
 catalog.json
-plugins/<id>/docker-compose.backend.yml    # server API (required)
-plugins/<id>/docker-compose.frontend.yml   # device web client
-plugins/<id>/clients/web/                  # static files + nginx template
-plugins/<id>/homelab-plugin.json           # optional
-schemas/
+plugins/<id>/docker-compose.backend.yml    # what Hub installs
+plugins/<id>/homelab-plugin.json
+plugins/<id>/openapi.yaml                  # REST API
+plugins/<id>/src/cli/                      # CLI copied into the image
+plugins/<id>/src/mcp/                      # MCP server copied into the image
+plugins/<id>/src/Dockerfile                # FROM the official image
+plugins/<id>/src/publish.sh                # build and push :enterprise
+plugins/<id>/official/                     # only when no official image exists
 ```
+
+Hub installs `ghcr.io/opendevtools-org/<id>:enterprise`. `src/publish.sh` builds
+that tag from the official image and pushes it. The enterprise image keeps the
+REST API as the container command and also contains `plugin-cli` and `plugin-mcp`.
 
 `docker-compose.yml` may exist as an alias that includes the backend file.
 
