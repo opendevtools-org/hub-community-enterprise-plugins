@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-05",
+  "updatedAt": "2026-11-06",
   "plugins": [
     {
       "id": "guacamole",
@@ -20,27 +20,6 @@
         {
           "kind": "web",
           "launchPath": "/"
-        }
-      ]
-    },
-    {
-      "id": "api-everything",
-      "name": "API Everything",
-      "description": "HTTP API. Hub installs ghcr.io/opendevtools-org/api-everything:enterprise. The image serves the REST API and includes the CLI and the MCP server.",
-      "version": "0.1.0",
-      "repo": "opendevtools-org/hub-community-enterprise-plugins",
-      "ref": "main",
-      "visibility": "community",
-      "uninstallable": false,
-      "install": {
-        "kind": "compose",
-        "role": "backend",
-        "composeFile": "plugins/api-everything/docker-compose.backend.yml"
-      },
-      "clients": [
-        {
-          "kind": "web",
-          "launchPath": "/swagger"
         }
       ]
     }
